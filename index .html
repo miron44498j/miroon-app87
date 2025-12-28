@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>Ⲡⲓ ϫⲱⲣⲓ⛪</title>
+  <style>
+    body {
+  font-family: 'cairo', sans-serif;
+  background: url("background.jpg") no-repeat center center fixed;
+  background-size: cover;
+  text-align: center;
+  direction: rtl;
+  font-size: 22px;
+  position: relative;
+  z-index: 0;
+}
+
+/* طبقة شفافة فوق الخلفية */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* غامق نص شفاف */
+  z-index: -1;
+}
+    h1 { color: #4a148c; }
+    .tab-button {
+      margin: 10px; padding: 10px 20px;
+      background-color: #7e57c2; color: white;
+      border: none; border-radius: 10px;
+      font-size: 20px; cursor: pointer;
+    }
+    .tab-button:hover { background-color: #673ab7; }
+    .questions { display: none; margin-top: 30px; }
+    .question {
+      background-color: white; padding: 20px;
+      margin: auto; width: 80%; border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: none;
+    }
+    .question.active { display: block; }
+    .answers button {
+      margin: 5px; padding: 10px 15px;
+      background-color: #d1c4e9;
+      border: none; border-radius: 8px;
+      cursor: pointer;
+    }
+    .answers button:hover { background-color: #b39ddb; }
+    .score-board {
+      margin-top: 20px; font-size: 30px;
+      color: #4a148c; font-weight: bold;
+    }
+    img.icon { width: 200px; }
+  
+.question img {
+  display: block;
+  margin: 0 auto 15px auto;
+  max-width: 250px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+</style>
+</head>
+<body>
+
+  <h1>Ⲡⲓ ϫⲱⲣⲓ⛪</h1>
+
+  <!-- أزرار اختيار العيد -->
+  <div>
+    <button class="tab-button" onclick="showTab('easter')"> القيامة</button>
+    <button class="tab-button" onclick="showTab('ascension')">الصعود</button>
+    <button class="tab-button" onclick="showTab('temple')"> دخول المسيح الهيكل</button>
+    <button class="tab-button" onclick="showTab('nativity')"> الميلاد</button>
+    <button class="tab-button" onclick="showTab('besh')"> البشاره</button>
+    <button class="tab-button" onclick="showTab('er')">الغطاس</button>
+    <button class="tab-button" onclick="showTab('ty')">الشعانين</button>
+    <button class="tab-button" onclick="showTab('y')">العنصره</button>
+    <button class="tab-button" onclick="showTab('t')">الختان</button>
+    <button class="tab-button" onclick="showTab('e')">التجلي</button>
+    <button class="tab-button" onclick="showTab('v')">احد توما</button>
+    <button class="tab-button" onclick="showTab('p')">دخول السيد المسيح ارض مصر</button>
+    <button class="tab-button" onclick="showTab('n')">خميس العهد</button>
+    <button class="tab-button" onclick="showTab('on')"> عرس قانا الجليل </button>
+  </div>
+
+  <!-- عيد القيامة -->
+  <div id="easter" class="questions">
+    <br>
+    <div class="question active">
+      بم تفسر :عدم ذهاب العذراء مريم للقبر؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">لثقتها في قيامته</button>
+        <button onclick="checkAnswer(false, this)">لانها كانت مريضه</button>
+        <button onclick="checkAnswer(false, this)">لان احد منعها</button>
+      </div>
+    </div>
+    <div class="question">
+      كم عدد الايام التي ظهر فيها السيد المسيح للتلاميذ؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">40</button>
+        <button onclick="checkAnswer(false, this)">50</button>
+        <button onclick="checkAnswer(false, this)">30</button>
+      </div>
+    </div>
+    <div class="question">
+      من أول من ظهر له المسيح بعد قيامته؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">بطرس</button>
+        <button onclick="checkAnswer(true, this)">مريم المجدلية</button>
+        <button onclick="checkAnswer(false, this)">يوحنا</button>
+      </div>
+    </div>
+    <div class="question">
+      في اي يوم من الايام تم تاسيس سر الافخارستيا؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">الخميس</button>
+        <button onclick="checkAnswer(false, this)">الاربعاء</button>
+        <button onclick="checkAnswer(false, this)">الجمعه</button>
+      </div>
+    </div>
+    <div class="question">
+      في اي يوم من الايام تم قيامه العازر؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">السبت</button>
+        <button onclick="checkAnswer(false, this)">الاحد</button>
+        <button onclick="checkAnswer(false, this)">الثلاثاء</button>
+      </div>
+    </div>
+    <div class="question">
+      في القيامه المسيح قابل التلاميذ لكن في واحد مكنش موجود مين هو؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">بطرس</button>
+        <button onclick="checkAnswer(true, this)">توما</button>
+        <button onclick="checkAnswer(false, this)">يوحنا</button>
+      </div>
+    </div>
+    <div class="question">
+      شوفت المسيح و مكنتش مصدق؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">توما</button>
+        <button onclick="checkAnswer(false, this)">بطرس</button>
+        <button onclick="checkAnswer(false, this)">مريم المجدليه</button>
+      </div>
+    </div>
+    <div class="question">
+      انا يوم مش عادي فيه القبر كان فاضي والموت اتغلب انا يوم اي يا اصحابي؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">احد القيامه</button>
+        <button onclick="checkAnswer(false, this)">الجمعه العظيمه</button>
+        <button onclick="checkAnswer(false, this)">سبت النور</button>
+      </div>
+    </div>
+    <div class="question">
+      في اي يوم من الايام تم شفاء المولود اعمي؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">الاحد</button>
+        <button onclick="checkAnswer(true, this)">السبت</button>
+        <button onclick="checkAnswer(false, this)">الاثنين</button>
+      </div>
+    </div>
+    <div class="question">
+      من هو التلميذ الذي شك في قيامة المسيح حتى رأى جراحاته؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">بطرس</button>
+        <button onclick="checkAnswer(true, this)">توما</button>
+        <button onclick="checkAnswer(false, this)">يوحنا</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- عيد الصعود -->
+  <div id="ascension" class="questions">
+    <br>
+    <div class="question active">
+      كم عدد التلاميذ الذين شاهدوا الصعود؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">11</button>
+        <button onclick="checkAnswer(false, this)">12</button>
+        <button onclick="checkAnswer(false, this)">13</button>
+      </div>
+    </div>
+    <div class="question">
+      انا مش نهايه لكن بدايه اعلمك ان في السما ليك غايه انا عيد من اعياد الكنيسه وبعدي عيد الروح و الكنيسه؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">الصعود</button>
+        <button onclick="checkAnswer(false, this)">حلول الروح القدس</button>
+        <button onclick="checkAnswer(false, this)">القيامه</button>
+      </div>
+    </div>
+    <div class="question">
+      في وعد جميل المسيح قاله قال اسيبكم بس هبعته لكم هييجي نار و محبه وسلام مين اللي هييجي ف الايام؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">الاب</button>
+        <button onclick="checkAnswer(true, this)">الروح القدس</button>
+        <button onclick="checkAnswer(false, this)">الابن</button>
+      </div>
+    </div>
+    <div class="question">
+      في يوم من الايام و بعد اربعين يوم من القيامه حصل حدث غريب رفع اعين الكل للسما اي هو؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">الصعود</button>
+        <button onclick="checkAnswer(false, this)">المجئ الثاني</button>
+        <button onclick="checkAnswer(false, this)">الميلاد</button>
+      </div>
+    </div>
+    <div class="question">
+      انا لست ثوبا ولا شخص ولكن عندما ظهر نور ابيض كنت رفيق المسيح في رحلته فمن انا؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">السحابه البيضاء</button>
+        <button onclick="checkAnswer(false, this)">الملاك ميخائيل</button>
+        <button onclick="checkAnswer(false, this)">يوحنا الحبيب</button>
+      </div>
+    </div>
+    <div class="question">
+      وعد المسيح تلاميذه ان ؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">يرسل لهم الروح القدس</button>
+        <button onclick="checkAnswer(false, this)">يعطيهم اموال كثيره</button>
+        <button onclick="checkAnswer(false, this)">ان يكونوا ملوك</button>
+      </div>
+    </div>
+    <div class="question">
+      قال الملاك سياتي كما......؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">رايتموه من قبل</button>
+        <button onclick="checkAnswer(true, this)">رايتموه صاعدا</button>
+        <button onclick="checkAnswer(false, this)">جاء الي اورشاليم</button>
+      </div>
+    </div>
+    <div class="question">
+      اين كان السيد المسيح عندما صعد؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">جبل الزيتون</button>
+        <button onclick="checkAnswer(false, this)">الناصره</button>
+        <button onclick="checkAnswer(false, this)">اورشاليم</button>
+      </div>
+    </div>
+    <div class="question">
+      من الذي بشر التلاميذ ان المسيح سيعود بنفس الطريقه التي صعد بها؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">رجلان بثياب بيض</button>
+        <button onclick="checkAnswer(false, this)">الملاك ميخائيل</button>
+        <button onclick="checkAnswer(false, this)">يوحنا الحبيب</button>
+      </div>
+    </div>
+    <div class="question">
+      بعد كم يوم من القيامة صعد السيد المسيح إلى السماء؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">30 يومًا</button>
+        <button onclick="checkAnswer(true, this)">40 يومًا</button>
+        <button onclick="checkAnswer(false, this)">50 يومًا</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- دخول المسيح الهيكل -->
+  <div id="temple" class="questions">
+    <br>
+    <div class="question active">
+      في أي عمر أُدخل المسيح إلى الهيكل؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">40 يومًا</button>
+        <button onclick="checkAnswer(false, this)">12 سنة</button>
+        <button onclick="checkAnswer(false, this)">3 شهور</button>
+      </div>
+    </div>
+    <div class="question">
+      انا عيد صغير من اعياد النور بعد40 يوم من ميلاد النور دخل يسوع بيت ربنا مين انا و مين حضنه؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">عيد دخول المسيح الهيكل - سمعان الشيخ</button>
+        <button onclick="checkAnswer(false, this)">عيد دخول المسيح الهيكل- العذراءمريم</button>
+        <button onclick="checkAnswer(false, this)">عيد دخول المسيح الهيكل- يوسف النجار</button>
+      </div>
+    </div>
+    <div class="question">
+      انا راجل كبير عايش سنين كنت مستني خلاص العالمين ولما شيلت الطفل الاله قلت كلام مليان بسكناه؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">يوسف النجار</button>
+        <button onclick="checkAnswer(true, this)">سمعان الشيخ</button>
+        <button onclick="checkAnswer(false, this)">زكاريا الكاهن</button>
+      </div>
+    </div>
+    <div class="question">
+      انا طفل لكن مش عادي دخلت الهيكل فحضني النادي انا رب الكل و جاي اتمم واعلم؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">يوحنا</button>
+        <button onclick="checkAnswer(false, this)">سمعان</button>
+        <button onclick="checkAnswer(true, this)">اجابه اخري</button>
+      </div>
+    </div>
+    <div class="question">
+      انا طائر صغير مش بنغني كتير بس في العيد اتقدمت كذبيحه مش غني بس مقبول في الشريعه؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">يمامه</button>
+        <button onclick="checkAnswer(false, this)">حمامه</button>
+        <button onclick="checkAnswer(false, this)">صقر</button>
+      </div>
+    </div>
+    <div class="question">
+      نبيه شافت الرب يسوع في الهيكل مين هي؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">حنه</button>
+        <button onclick="checkAnswer(false, this)">اليصابات</button>
+        <button onclick="checkAnswer(false, this)">المجدليه</button>
+      </div>
+    </div>
+    <div class="question">
+      لما سمعان الشيخ شاف المسيح قال انه شاف اي؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">النور</button>
+        <button onclick="checkAnswer(true, this)">الخلاص</button>
+        <button onclick="checkAnswer(false, this)">الملاك</button>
+      </div>
+    </div>
+    <div class="question">
+      سمعان الشيخ كان مستني يشوف مين؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">يوحنا</button>
+        <button onclick="checkAnswer(false, this)">مريم</button>
+        <button onclick="checkAnswer(true, this)">المسيح</button>
+      </div>
+    </div>
+    <div class="question">
+      عيد من الاعياد السيديه مش كبير لكن له رمزيه يدل ان يسوع كمل الناموس واتقدم زي الفقرا للقدوس؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">دخول المسيح الهيكل</button>
+        <button onclick="checkAnswer(false, this)">دخول المسيح ارض مصر</button>
+        <button onclick="checkAnswer(false, this)">الصعود</button>
+      </div>
+    </div>
+    <div class="question">
+      من هما الشخصان اللذان قابلا الطفل يسوع في الهيكل؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">سمعان الشيخ وحنة النبية</button>
+        <button onclick="checkAnswer(false, this)">يوسف النجار ومريم</button>
+        <button onclick="checkAnswer(false, this)">زكريا وأليصابات</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- عيد البشاره -->
+  <div id="besh" class="questions">
+    <br>
+    <div class="question active">
+      الملاك ظهر للعدرا علشان يبشرها فين؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">الناصره</button>
+        <button onclick="checkAnswer(false, this)">بيت لحم</button>
+        <button onclick="checkAnswer(false, this)">اورشاليم</button>
+      </div>
+    </div>
+    <div class="question">
+      انا مش بس كلمه تتقال انا خلاص لاجيال؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">البشاره</button>
+        <button onclick="checkAnswer(false, this)">القيامه</button>
+        <button onclick="checkAnswer(false, this)">الميلاد</button>
+      </div>
+    </div>
+    <div class="question">
+      انا حامل السر الكبير مش من بشر ولا من امير؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">المجدليه</button>
+        <button onclick="checkAnswer(true, this)">العذراء</button>
+        <button onclick="checkAnswer(false, this)">مريم اخت مرثا</button>
+      </div>
+    </div>
+    <div class="question">
+      العدرا قالتلي ازاي يحصل كده من انا؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">الملاك ميخائيل</button>
+        <button onclick="checkAnswer(false, this)">الملاك روفائيل</button>
+        <button onclick="checkAnswer(true, this)">الملاك جبرائيل</button>
+      </div>
+    </div>
+    <div class="question">
+      انا سر كبير و نعمه قالها الملاك بكلمه؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">البشاره</button>
+        <button onclick="checkAnswer(false, this)">الميلاد</button>
+        <button onclick="checkAnswer(false, this)">القيامه</button>
+      </div>
+    </div>
+    <div class="question">
+      انا مدينه في الجليل حصلت فيها حاجه تميل العذراء فيها سكنت و الملاك ليها ظهر و اتكلم؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">الناصره</button>
+        <button onclick="checkAnswer(false, this)">بيت لحم</button>
+        <button onclick="checkAnswer(false, this)">اورشاليم</button>
+      </div>
+    </div>
+    <div class="question">
+      انا رسول من عند الله جبت خبر مفهوش مزاح لما ظهرت في الناصره ابتدت قصه البشاره؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">الملاك ميخائيل</button>
+        <button onclick="checkAnswer(true, this)">الملاك جبرائيل </button>
+        <button onclick="checkAnswer(false, this)">الملاك روفائيل</button>
+      </div>
+    </div>
+    <div class="question">
+      انا بنت طاهره نقيه عايشه حياه سماويه جالي ملاك من فوق و بكلمه صارت احشائي صندوق انا مين؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">مريم المجدليه</button>
+        <button onclick="checkAnswer(false, this)">مريم اخت لعازر</button>
+        <button onclick="checkAnswer(true, this)">العذراء مريم</button>
+      </div>
+    </div>
+    <div class="question">
+      من الملاك الذي بشر السيه العذراء؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">جبرائيل</button>
+        <button onclick="checkAnswer(false, this)">روفائيل</button>
+        <button onclick="checkAnswer(false, this)">ميخائيل</button>
+      </div>
+    </div>
+    <div class="question">
+      ماذا قال الملاك للعذراء مريم؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">اهربي الي مصر</button>
+        <button onclick="checkAnswer(true, this)">السلام لكي ايتها الممتلئه نعمه</button>
+        <button onclick="checkAnswer(false, this)">لا تخافي من هيرودس</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- عيد الميلاد -->
+  <div id="nativity" class="questions">
+    <br>
+    <div class="question active">
+      من انا :اصدرت امرا ان تكتب كل المسكونه؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">هيرودس</button>
+        <button onclick="checkAnswer(false, this)">اغسطس قيصر</button>
+        <button onclick="checkAnswer(false, this)">رئيس الكهنه</button>
+      </div>
+    </div>
+    <div class="question">
+      من انا :سجدت للطفل يسوع و انا في بطن امي؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">يوحنا المعمدان</button>
+        <button onclick="checkAnswer(false, this)">بطرس</button>
+        <button onclick="checkAnswer(false, this)">رئيس الكهنه</button>
+      </div>
+    </div>
+    <div class="question">
+      من انا :انا اللي شهدت ان العدرا ولدت؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">سالومي</button>
+        <button onclick="checkAnswer(false, this)">مريم </button>
+        <button onclick="checkAnswer(false, this)">الرعاه</button>
+      </div>
+    </div>
+    <div class="question">
+      كنت النجار و رعيت الطفل الصغير باهتمام و وقار مين انا؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">يوسف النجار</button>
+        <button onclick="checkAnswer(false, this)">صاحب المزود </button>
+        <button onclick="checkAnswer(false, this)">الرعاه</button>
+      </div>
+    </div>
+    <div class="question">
+      كنت خايف علي ملكي فقتلت الاطفال في ظلم وشك مين انا؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">هيرودس</button>
+        <button onclick="checkAnswer(false, this)">اغسطس قيصر</button>
+        <button onclick="checkAnswer(false, this)">رئيس الكهنه</button>
+      </div>
+    </div>
+    <div class="question">
+      نورت السما و بشرت الناس جاي من فوق و ماشي في سرعه و احساس مين انا؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">نجم الميلاد</button>
+        <button onclick="checkAnswer(false, this)">الرب يسوع </button>
+        <button onclick="checkAnswer(false, this)">الملاك</button>
+      </div>
+    </div>
+    <div class="question">
+      قدموله هدايا تلاته واحده للملك و واحده للاله و واحده رمز للالم اي هما؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">لبان و مر و ذهب</button>
+        <button onclick="checkAnswer(false, this)">ملابس لبان و ذهب </button>
+        <button onclick="checkAnswer(false, this)">اجابه اخري</button>
+      </div>
+    </div>
+    <div class="question">
+      بيت صغير في قريه هاديه اتولد فيه السلام وكان سبب خلاص للانام اسمه اي؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">بيت لحم</button>
+        <button onclick="checkAnswer(false, this)">اورشاليم </button>
+        <button onclick="checkAnswer(false, this)">الناصره</button>
+      </div>
+    </div>
+    <div class="question">
+      مش مصباح ولا فانوس لكنه قاد المجوس اي هو؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">النجم</button>
+        <button onclick="checkAnswer(false, this)">الملاك</button>
+        <button onclick="checkAnswer(false, this)">يسوع</button>
+      </div>
+    </div>
+    <div class="question">
+      مش ملك علي العرش ولا غني لكن لما اتولد كل السما غنت له مين هو؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">يسوع</button>
+        <button onclick="checkAnswer(false, this)">يوحنا </button>
+        <button onclick="checkAnswer(false, this)">الملاك</button>
+      </div>
+    </div>
+    <div class="question">
+      من انا : بلغت العذراء مريم بميلاد المسيح؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">ملاك آخر</button>
+        <button onclick="checkAnswer(true, this)">الملاك جبرائيل</button>
+        <button onclick="checkAnswer(false, this)">سمعان الشيخ</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- عيد الغطاس -->
+  <div id="er" class="questions">
+    <br>
+    <div class="question active">
+      نزل الروح القدس علي شكل؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">حمامه</button>
+        <button onclick="checkAnswer(false, this)">السنه نار</button>
+        <button onclick="checkAnswer(false, this)">سحابه</button>
+      </div>
+    </div>
+    <div class="question">
+      من انا:كنت في المياه؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">الابن</button>
+        <button onclick="checkAnswer(false, this)">الاب </button>
+        <button onclick="checkAnswer(false, this)">الاب و الابن والروح القدس</button>
+      </div>
+    </div>
+    <div class="question">
+      فاكهه بنحبها في العيد شكلها بيمشي علي القلب السعيد لونها ابيض من جوه و نضيف زي قلب الطفل اللي بالايمان نضيف؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">قصب</button>
+        <button onclick="checkAnswer(false, this)">قلقاس </button>
+        <button onclick="checkAnswer(false, this)">جوافه</button>
+      </div>
+    </div>
+    <div class="question">
+      لونها زي الملوخيه و بناكلها في العيد ده؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">قلقاس</button>
+        <button onclick="checkAnswer(false, this)">قصب</button>
+        <button onclick="checkAnswer(false, this)">ملوخيه</button>
+      </div>
+    </div>
+    <div class="question">
+      من انا عمدت الاله؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">يوحنا المعمدان </button>
+        <button onclick="checkAnswer(false, this)">يوحنا الحبيب </button>
+        <button onclick="checkAnswer(false, this)">يوحنا ابن زبدي</button>
+      </div>
+    </div>
+    <div class="question">
+      الروح القدس نزل علي شكل اي؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">حمامه</button>
+        <button onclick="checkAnswer(false, this)">السنه نار </button>
+        <button onclick="checkAnswer(false, this)">ماء</button>
+      </div>
+    </div>
+    <div class="question">
+      اتكلمت بصوت من السماء؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">الاب</button>
+        <button onclick="checkAnswer(false, this)">الابن </button>
+        <button onclick="checkAnswer(false, this)">الروح القدس</button>
+      </div>
+    </div>
+    <div class="question">
+      في عيد الغطاس في طقس مهم بيحصل اي هو؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">لقان</button>
+        <button onclick="checkAnswer(false, this)">مسحه مرضي</button>
+        <button onclick="checkAnswer(false, this)">قنديل</button>
+      </div>
+    </div>
+    <div class="question">
+      انا السر رقم واحد في الكنيسه وبيسموني باب الخلاص؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">معموديه</button>
+        <button onclick="checkAnswer(false, this)">ميرون </button>
+        <button onclick="checkAnswer(false, this)">تناول</button>
+      </div>
+    </div>
+    <div class="question">
+      من قال بصوت من السماء"هذا هو ابني الحبيب الذي به سررت"؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">الابن</button>
+        <button onclick="checkAnswer(true, this)">الاب</button>
+        <button onclick="checkAnswer(false, this)">الروح القدس</button>
+      </div>
+    </div>
+  </div>
+  <!-- عيد الشعانين -->
+  <div id="ty" class="questions">
+    <br>
+    <div class="question active">
+      ما معني كلمه شعانين؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">خلصنا</button>
+        <button onclick="checkAnswer(false, this)">سلام</button>
+        <button onclick="checkAnswer(false, this)">فرح</button>
+      </div>
+    </div>
+    <div class="question">
+      الناس فرشوا ثيابهم في الطريق و سعف النخل ان له بريق ما العيد ده يا صديق؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">الشعانين</button>
+        <button onclick="checkAnswer(false, this)">الميلاد </button>
+        <button onclick="checkAnswer(false, this)">القيامه</button>
+      </div>
+    </div>
+    <div class="question">
+      شعب كتير رحب وهلل دخل اورشاليم و استقبل مين كان ضيف لمدينه؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">يسوع</button>
+        <button onclick="checkAnswer(false, this)">ملك </button>
+        <button onclick="checkAnswer(false, this)">رئيس كهنه</button>
+      </div>
+    </div>
+    <div class="question">
+      معني كلمه"اوصنا"؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">خلصنا</button>
+        <button onclick="checkAnswer(false, this)">باركنا </button>
+        <button onclick="checkAnswer(false, this)">مرحبا</button>
+      </div>
+    </div>
+    <div class="question">
+      دخل الرب يسوع اورشاليم راكبا علي؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">جحش</button>
+        <button onclick="checkAnswer(false, this)">جمل </button>
+        <button onclick="checkAnswer(false, this)">حصان</button>
+      </div>
+    </div>
+    <div class="question">
+      عيد بيثبت ان الايام بتتغير؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">الشعانين</button>
+        <button onclick="checkAnswer(false, this)">الميلاد </button>
+        <button onclick="checkAnswer(false, this)">القيامه</button>
+      </div>
+    </div>
+    <div class="question">
+      حد الشعانين هو بدايه اي؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">اسبوع الالام</button>
+        <button onclick="checkAnswer(false, this)">الصوم الكبير </button>
+        <button onclick="checkAnswer(false, this)">القيامه</button>
+      </div>
+    </div>
+    <div class="question">
+      مين قال للمسيح " علم تلاميذك يسكتون؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">الفريسيون</button>
+        <button onclick="checkAnswer(false, this)">الرومان</button>
+        <button onclick="checkAnswer(false, this)">بطرس</button>
+      </div>
+    </div>
+    <div class="question">
+      من انا اتنبات ان المسيح هييجي علي اتان وجحش ابن اتان؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">زكاريا </button>
+        <button onclick="checkAnswer(false, this)">اشعياء </button>
+        <button onclick="checkAnswer(false, this)">الملاك</button>
+      </div>
+    </div>
+    <div class="question">
+      ماذا كان يحمل الشعب في ايديهم عند استقبال الرب يسوع؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">ورود</button>
+        <button onclick="checkAnswer(true, this)">سعف النخيل</button>
+        <button onclick="checkAnswer(false, this)">شموع</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- عيد العنصره -->
+  <div id="y" class="questions">
+    <br>
+    <div class="question active">
+      ما معني عنصره؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">خمسين</button>
+        <button onclick="checkAnswer(false, this)">نار</button>
+        <button onclick="checkAnswer(false, this)">فرح</button>
+      </div>
+    </div>
+    <div class="question">
+      نبي قال"اني اسكب روحي علي كل جسد"؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">يوئيل</button>
+        <button onclick="checkAnswer(false, this)">اشعياء </button>
+        <button onclick="checkAnswer(false, this)">زكاريا</button>
+      </div>
+    </div>
+    <div class="question">
+      انا مش ريح لكن جيت في عيد العنصره بقوه انا رمز لايه؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">الروح القدس</button>
+        <button onclick="checkAnswer(false, this)">الاب</button>
+        <button onclick="checkAnswer(false, this)">الابن</button>
+      </div>
+    </div>
+    <div class="question">
+      الرسل فضلوا كام يوم مستنيين الروح القدس؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">10</button>
+        <button onclick="checkAnswer(false, this)">15</button>
+        <button onclick="checkAnswer(false, this)">5</button>
+      </div>
+    </div>
+    <div class="question">
+      نزل عليا نار لكن محرقتنيش انا مين؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">التلاميذ</button>
+        <button onclick="checkAnswer(false, this)">الرب يسوع </button>
+        <button onclick="checkAnswer(false, this)">بطرس</button>
+      </div>
+    </div>
+    <div class="question">
+      انا عيذ من الاعياد منغيري مكنش الايمان وصل لكم؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">العنصره</button>
+        <button onclick="checkAnswer(false, this)">حلول الروح القدس </button>
+        <button onclick="checkAnswer(true, this)">الاولي و الثانيه معا</button>
+      </div>
+    </div>
+    <div class="question">
+      كانوا خايفين و قاعدين في عليه؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">التلاميذ</button>
+        <button onclick="checkAnswer(false, this)">المريمات </button>
+        <button onclick="checkAnswer(false, this)">الرعاه</button>
+      </div>
+    </div>
+    <div class="question">
+      مش نر تحرق لكن نار تنور؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">الروح القدس</button>
+        <button onclick="checkAnswer(false, this)">الايمان</button>
+        <button onclick="checkAnswer(false, this)">حلول الروح القدس</button>
+      </div>
+    </div>
+    <div class="question">
+      بعد حلول الروح القدس حصل اي للتلاميذ؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">تكلم بلفات كثيره</button>
+        <button onclick="checkAnswer(false, this)">لم يحدث شيئ </button>
+        <button onclick="checkAnswer(false, this)">كرزوا علطول</button>
+      </div>
+    </div>
+    <div class="question">
+      حل الروح القدس علي التلاميذ في صوره؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">حمامه</button>
+        <button onclick="checkAnswer(true, this)">السنه نار</button>
+        <button onclick="checkAnswer(false, this)">سحابه</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- الختان -->
+  <div id="t" class="questions">
+    <br>
+    <div class="question active">
+      ما الطقس الكنسي المستخدم في عيد الختان؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">6طوبه</button>
+        <button onclick="checkAnswer(false, this)">1كيهك</button>
+        <button onclick="checkAnswer(false, this)">29برمهات</button>
+      </div>
+    </div>
+    <div class="question">
+      اول نبي بدء الختان كعهد من الله؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">ابراهيم</button>
+        <button onclick="checkAnswer(false, this)">موسي</button>
+        <button onclick="checkAnswer(false, this)">صموئيل</button>
+      </div>
+    </div>
+    <div class="question">
+      ما هو ترتيب عيد الختان بين الاعياد السديه الصغري؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">الثاني</button>
+        <button onclick="checkAnswer(false, this)">الثالث </button>
+        <button onclick="checkAnswer(false, this)">لا يعد من الاعياد السيديه</button>
+      </div>
+    </div>
+    <div class="question">
+      لماذا لا يمارس الختان كفريضه روحيه في العهد الجديد؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">لانه تم استبدالها بالمعموديه</button>
+        <button onclick="checkAnswer(false, this)">لانه عاده يهوديه فقط</button>
+        <button onclick="checkAnswer(false, this)">لانه لا يخص غير اليهود</button>
+      </div>
+    </div>
+    <div class="question">
+      علي ماذا كان يدل الختان في العهد القديم؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">العبوديه</button>
+        <button onclick="checkAnswer(false, this)">الطهاره</button>
+        <button onclick="checkAnswer(true, this)">علامه العهد مع الله</button>
+      </div>
+    </div>
+    <div class="question">
+      اين ورد ذكر ختان المسيح في الكتاب المقدس؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">يوحنا </button>
+        <button onclick="checkAnswer(true, this)">لوقا</button>
+        <button onclick="checkAnswer(false, this)">مرقس</button>
+      </div>
+    </div>
+    <div class="question">
+      ما الهدف من ختان المسيح حسب المفهوم اللاهوتي؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">اعلان طاعته للناموس</button>
+        <button onclick="checkAnswer(false, this)">اعلان بدايه رسالته</button>
+        <button onclick="checkAnswer(false, this)">اظهار قوته الجسديه</button>
+      </div>
+    </div>
+    <div class="question">
+      كم كان عمر المسيح عند ختانه؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">3ايام</button>
+        <button onclick="checkAnswer(false, this)">7ايام</button>
+        <button onclick="checkAnswer(true, this)">8ايام</button>
+      </div>
+    </div>
+    <div class="question">
+      متي تحتفل اكنيسه القبطيه بالختان؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">8طوبه</button>
+        <button onclick="checkAnswer(false, this)">8كيهك</button>
+        <button onclick="checkAnswer(false, this)">8توت</button>
+      </div>
+    </div>
+    <div class="question">
+
+      في اي يوم من ميلاد السيد المسيح تم ختانه حسب الشريعه اليهوديه؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">اليوم الثالث</button>
+        <button onclick="checkAnswer(true, this)">اليوم الثامن</button>
+        <button onclick="checkAnswer(false, this)">اليوم السابع</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- عيد التجلي -->
+  <div id="e" class="questions">
+    <br>
+    <div class="question active">
+      متي تحتفل الكنيسه بعيد التجلي؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">13توت</button>
+        <button onclick="checkAnswer(true, this)">13مسري</button>
+        <button onclick="checkAnswer(false, this)">13 كيهك</button>
+      </div>
+    </div>
+    <div class="question">
+      بماذا اضاء وجه المسيح اثناء التجلي؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">كالشمس</button>
+        <button onclick="checkAnswer(false, this)">كالسراج</button>
+        <button onclick="checkAnswer(false, this)">كالذهب</button>
+      </div>
+    </div>
+    <div class="question">
+      لماذا لا ياتي عيد التجلي داخل فتره الصوم؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">لانه يقع بعد نهايه صوم العذراء مريم</button>
+        <button onclick="checkAnswer(false, this)">لانه عيذ صغير</button>
+        <button onclick="checkAnswer(false, this)">لانه مرتبط بالقيامه</button>
+      </div>
+    </div>
+    <div class="question">
+      علي اي جبل تجلي الرب؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">الزيتون</button>
+        <button onclick="checkAnswer(true, this)">طابور</button>
+        <button onclick="checkAnswer(false, this)">سيناء</button>
+      </div>
+    </div>
+    <div class="question">
+      معني كلمه "تجلي"؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">الظهور في مجد و نور</button>
+        <button onclick="checkAnswer(false, this)">الظهور في شكل عادي</button>
+        <button onclick="checkAnswer(false, this)">الاختفاء</button>
+      </div>
+    </div>
+    <div class="question">
+      من اللذان ظهرا مع الرب في التجلي؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">موسي و ايليا</button>
+        <button onclick="checkAnswer(false, this)">داود و سليمان</button>
+        <button onclick="checkAnswer(false, this)">ابراهيم و يعقوب</button>
+      </div>
+    </div>
+    <div class="question">
+      علي اي جبل تجلي الرب؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">الزيتون</button>
+        <button onclick="checkAnswer(true, this)">طابور</button>
+        <button onclick="checkAnswer(false, this)">سيناء</button>
+      </div>
+    </div>
+    <div class="question">
+      معني كلمه "تجلي"؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">الظهور في مجد و نور</button>
+        <button onclick="checkAnswer(false, this)">الظهور في شكل عادي</button>
+        <button onclick="checkAnswer(false, this)">الاختفاء</button>
+      </div>
+    </div>
+    <div class="question">
+      من انا وشي نور زي الشمس في التجلي؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">الرب يسوع</button>
+        <button onclick="checkAnswer(false, this)">موسي و ايليا</button>
+        <button onclick="checkAnswer(false, this)">بطرس و يعقوب و يوحنا</button>
+      </div>
+    </div>
+    <div class="question">
+      مين  التلاميذ اللي كانوا مع الرب يسوع اثناء التجلي؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">بطرس و متي و يوحنا</button>
+        <button onclick="checkAnswer(true, this)">بطرس و يعقوب و يوحنا</button>
+        <button onclick="checkAnswer(false, this)">بطرس و توما ويوحنا</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- احد توما -->
+  <div id="v" class="questions">
+    <br>
+    <div class="question active">
+      ماذا قال المسيح لتوما عندما ظهر له؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">هات اصبعك الي هنا و ابصر</button>
+        <button onclick="checkAnswer(false, this)">تعال و انظر</button>
+        <button onclick="checkAnswer(false, this)">لا تخف</button>
+      </div>
+    </div>
+    <div class="question">
+      ماذا طلب توما ليتاكد انه المسيح؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">ان يلمس اثار الحربه و المسامير</button>
+        <button onclick="checkAnswer(false, this)">ان يسمع صوت الرب</button>
+        <button onclick="checkAnswer(false, this)">ان يري الملاك</button>
+      </div>
+    </div>
+    <div class="question">
+      ماذا قال توما عندما راي المسيح؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">انت هو المسيح</button>
+        <button onclick="checkAnswer(true, this)">ربي و الهي</button>
+        <button onclick="checkAnswer(false, this)">المجد لك يارب</button>
+      </div>
+    </div>
+    <div class="question">
+      متي يحتفل باحد توما؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">الاحد التالي لعيد القيامه مباشره</button>
+        <button onclick="checkAnswer(false, this)">في احد الشعانين</button>
+        <button onclick="checkAnswer(false, this)">في عيد الصعود</button>
+      </div>
+    </div>
+    <div class="question">
+      ماذا يلقب احد توما؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">الاحد الجديد</button>
+        <button onclick="checkAnswer(false, this)">احد الشك</button>
+        <button onclick="checkAnswer(false, this)">احد الظهور</button>
+      </div>
+    </div>
+    <div class="question">
+      ماذا قال الرب لتوما بعدما امن؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">طوبي لمن يحبني</button>
+        <button onclick="checkAnswer(true, this)">لا تكن غير مؤمن بل مؤمنا</button>
+        <button onclick="checkAnswer(false, this)">ها انا معكم</button>
+      </div>
+    </div>
+    <div class="question">
+      شوفت المسيح و مكنتش مصدق؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">توما</button>
+        <button onclick="checkAnswer(false, this)">بطرس</button>
+        <button onclick="checkAnswer(false, this)">مريم المجدليه</button>
+      </div>
+    </div>
+    <div class="question">
+      ما الدرس الاساسي في قصه توما؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">الايمان بدون ان نري</button>
+        <button onclick="checkAnswer(false, this)">طاعه الوصايا</button>
+        <button onclick="checkAnswer(false, this)">اهميه المعرفه</button>
+      </div>
+    </div>
+    <div class="question">
+      لماذا لم يكن توما مع التلاميذ في ظهور المسيح الاول؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">كان في السجن</button>
+        <button onclick="checkAnswer(true, this)">السبب لم يذكر</button>
+        <button onclick="checkAnswer(false, this)">كان في مهمه تبشيريه</button>
+      </div>
+    </div>
+    <div class="question">
+      في اي انجيل وردت قصه ظهور المسيح للتلاميذ و معهم توما؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">متي</button>
+        <button onclick="checkAnswer(false, this)">مرقس</button>
+        <button onclick="checkAnswer(true, this)">يوحنا</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- دخول المسيح ارض مصر -->
+  <div id="p" class="questions">
+    <br>
+    <div class="question active">
+      مين الملك اللي خاف علي سلتطه و قال نخلص من اللي جاي يهد ملكه؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">هيرودس</button>
+        <button onclick="checkAnswer(false, this)">نيرون</button>
+        <button onclick="checkAnswer(false, this)">قسطنطين</button>
+      </div>
+    </div>
+    <div class="question">
+      مين اللي ظهر ليوسف في الحلم و قال له يهرب هو و الصبي و امه؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">الملاك</button>
+        <button onclick="checkAnswer(false, this)">المسيح</button>
+        <button onclick="checkAnswer(false, this)">النجم</button>
+      </div>
+    </div>
+    <div class="question">
+      لماذا هربت العائله المقدسه لارض مصر؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">للزياره</button>
+        <button onclick="checkAnswer(true, this)">للهروب من هيرودس</button>
+        <button onclick="checkAnswer(false, this)">لقضاء العطله</button>
+      </div>
+    </div>
+    <div class="question">
+      في اي يوم نحتفل بدخول المسيح ارض مصر؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">24بشنس</button>
+        <button onclick="checkAnswer(false, this)">1توت</button>
+        <button onclick="checkAnswer(false, this)">29كيهك</button>
+      </div>
+    </div>
+    <div class="question">
+      اول مدينه دخلتها العائله المقدسه في مصر؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">الفرما</button>
+        <button onclick="checkAnswer(false, this)">سمنود</button>
+        <button onclick="checkAnswer(false, this)">المطريه</button>
+      </div>
+    </div>
+    <div class="question">
+      ما المعجزه التي حدثت عند دخول العائله المقدسه ارض مصر؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">سقوط الاصنام</button>
+        <button onclick="checkAnswer(false, this)">هروب جنود هيرودس</button>
+        <button onclick="checkAnswer(false, this)">تفجر نهر</button>
+      </div>
+    </div>
+    <div class="question">
+      كم من الوقت قضته العائله المقدسه في مصر؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)"سنه</button>
+        <button onclick="checkAnswer(true, this)">3سنوان ونصف</button>
+        <button onclick="checkAnswer(false, this)">7سنوات</button>
+      </div>
+    </div>
+    <div class="question">
+      اسم الدير الذي يعتبر اخر محطه للعائله المقدسه في مصر؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">المحرق</button>
+        <button onclick="checkAnswer(false, this)">الانبا انطونيوس </button>
+        <button onclick="checkAnswer(false, this)">مارمينا</button>
+      </div>
+    </div>
+    <div class="question">
+      ما اسم الشجره التي استراحت عندها العائله المقدسه في المطريه؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">شجره مريم</button>
+        <button onclick="checkAnswer(false, this)">شجره الحياه</button>
+        <button onclick="checkAnswer(false, this)">شجره الزيتون</button>
+      </div>
+    </div>
+    <div class="question">
+      كيف عرفت العائله المقدسه ان الوقت اصح مناسب للعوده ال مصر؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">عندما استقرت الاحوال في مصر</button>
+        <button onclick="checkAnswer(true, this)">بوصيه الملاك</button>
+        <button onclick="checkAnswer(false, this)">عن طريق المجوس</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- خميس العهد -->
+  <div id="n" class="questions">
+    <br>
+    <div class="question active">
+      ما هو الطقس الخاص الذي يقام في الكنيسه في خميس العهد فقط؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">لقان</button>
+        <button onclick="checkAnswer(false, this)">زفه الانجيل</button>
+        <button onclick="checkAnswer(false, this)">صلاه المساء</button>
+      </div>
+    </div>
+    <div class="question">
+      اين اجتمع الرب مع تلاميذه في خميس العهذ؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">عليه صهيون</button>
+        <button onclick="checkAnswer(false, this)">بيت عينيا</button>
+        <button onclick="checkAnswer(false, this)">جبل الزيتون</button>
+      </div>
+    </div>
+    <div class="question">
+      اي من الاتي لايقام في الكنيسه من خميس العهد حتي عيد القيامه؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">التناول</button>
+        <button onclick="checkAnswer(true, this)">مسحه المرضي</button>
+        <button onclick="checkAnswer(false, this)">صلاه باكر</button>
+      </div>
+    </div>
+    <div class="question">
+      اي التلاميذ سال الرب من هذا يا سيذ الذي يسلمك؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">فيلبس</button>
+        <button onclick="checkAnswer(false, this)">سمعان</button>
+        <button onclick="checkAnswer(true, this)">يوحنا</button>
+      </div>
+    </div>
+    <div class="question">
+      ما نوع الخبز الذي استخدمه الرب في العشاء الرباني؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">فطير</button>
+        <button onclick="checkAnswer(false, this)">خبز مخمر</button>
+        <button onclick="checkAnswer(false, this)">خبز قمح</button>
+      </div>
+    </div>
+    <div class="question">
+      معني كلمه"لقان"؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">اناء الغسل</button>
+        <button onclick="checkAnswer(false, this)">مغسله</button>
+        <button onclick="checkAnswer(false, this)">مائده الطعام</button>
+      </div>
+    </div>
+    <div class="question">
+      كان الرب يسوع يعد التلاميذ لماذا في خميس العهد؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">الصعود الي الجلجثه</button>
+        <button onclick="checkAnswer(true, this)">الالام و الصلب</button>
+        <button onclick="checkAnswer(false, this)">لخدمه الكرازه</button>
+      </div>
+    </div>
+    <div class="question">
+      كم قطعه فضه اخذها يهوذا مقابل تسليم الرب يسوع؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">خمسون</button>
+        <button onclick="checkAnswer(false, this)">عشرون</button>
+        <button onclick="checkAnswer(true, this)">ثلاثون</button>
+      </div>
+    </div>
+    <div class="question">
+      من انا قلت للرب يسوع"لن تغسل رجلي ابدا"؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">بطرس</button>
+        <button onclick="checkAnswer(false, this)">بولس</button>
+        <button onclick="checkAnswer(false, this)">توما</button>
+      </div>
+    </div>
+    <div class="question">
+      ماذا اسس الرب يسوع في خميس العهد؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">سر التناول</button>
+        <button onclick="checkAnswer(false, this)">سر الكهنوت</button>
+        <button onclick="checkAnswer(false, this)">سر الميرون</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- عرس قانا الجليل -->
+  <div id="on" class="questions">
+    <br>
+    <div class="question active">
+      من انا :لاحظت المشكله؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">العذراء مريم</button>
+        <button onclick="checkAnswer(false, this)">العريس و العروسه</button>
+        <button onclick="checkAnswer(false, this)">رئيس المتكا</button>
+      </div>
+    </div>
+    <div class="question">
+      من الذي تذوق الخمر اولا؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">رئيس المتكا</button>
+        <button onclick="checkAnswer(false, this)">المسيح</button>
+        <button onclick="checkAnswer(false, this)">الخدام</button>
+      </div>
+    </div>
+    <div class="question">
+      اين تقع قانا الجليل؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">الجليل</button>
+        <button onclick="checkAnswer(false, this)">اورشاليم</button>
+        <button onclick="checkAnswer(false, this)">الناصره</button>
+      </div>
+    </div>
+    <div class="question">
+      لم يذكر اسمائهم لكنه مهم في المعجزه؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">رئيس المتكا</button>
+        <button onclick="checkAnswer(true, this)">الخدام</button>
+        <button onclick="checkAnswer(false, this)">العريس</button>
+      </div>
+    </div>
+    <div class="question">
+      كم عدد اجران الماء؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">8</button>
+        <button onclick="checkAnswer(false, this)">7</button>
+        <button onclick="checkAnswer(true, this)">6</button>
+      </div>
+    </div>
+    <div class="question">
+      امن الذي لاحظ اولا نفاذ الخمر؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">العذراء مريم</button>
+        <button onclick="checkAnswer(false, this)">رئيس المتكا</button>
+        <button onclick="checkAnswer(false, this)">تلميذ</button>
+      </div>
+    </div>
+    <div class="question">
+      مارد المسيح علي امه عندما قالت له ليس عندهم خمر؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">لم تاتي ساعتي بعد</button>
+        <button onclick="checkAnswer(false, this)">انا اعمل الايه الان</button>
+        <button onclick="checkAnswer(false, this)">قل لها يا تلميذ</button>
+      </div>
+    </div>
+    <div class="question">
+      الميه اتحولت طعم بكميه فوق الوهم والهم الكميه كانت قد اي؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">60-90لتر</button>
+        <button onclick="checkAnswer(true, this)">300-400لتر </button>
+        <button onclick="checkAnswer(false, this)">50-100لتر</button>
+      </div>
+    </div>
+    <div class="question">
+      ما الذي قاله رئيس المتكا؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">اين اشتريت هذا</button>
+        <button onclick="checkAnswer(false, this)">الخمر رديئه</button>
+        <button onclick="checkAnswer(true, this)">انت اخرت الجيد</button>
+      </div>
+    </div>
+    <div class="question">
+      ماذا كانت نتيجه تلك المعجزه بحسب الانجيل؟
+      <div class="answers">
+        <button onclick="checkAnswer(true, this)">مجد المسيح اعلن وتلاميذه امنوا به</button>
+        <button onclick="checkAnswer(false, this)">تعجب لناس فقط</button>
+        <button onclick="checkAnswer(false, this)">انصرف الجميع</button>
+      </div>
+    </div>
+    <div class="question">
+      في اي انجيل جائت معجزه عرس قانا الجليل؟
+      <div class="answers">
+        <button onclick="checkAnswer(false, this)">متي</button>
+        <button onclick="checkAnswer(true, this)">يوحنا</button>
+        <button onclick="checkAnswer(false, this)">لوقا</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- النقاط -->
+  <div class="score-board" id="scoreBoard">النقاط: 0</div>
+
+  <!-- أصوات -->
+  <audio id="correctSound" src="correct.mp3" preload="auto"></audio>
+  <audio id="wrongSound" src="wrong.mp3" preload="auto"></audio>
+
+  <script>
+    let score = 0;
+    function showTab(tabId) {
+      document.querySelectorAll('.questions').forEach(tab => {
+        tab.style.display = 'none';
+        tab.querySelectorAll('.question').forEach(q => q.classList.remove('active'));
+        const first = tab.querySelector('.question');
+        if (first) first.classList.add('active');
+      });
+      document.getElementById(tabId).style.display = 'block';
+    }
+
+    function checkAnswer(isCorrect, button) {
+      if (isCorrect) {
+        score += 1;
+        document.getElementById("correctSound").play();
+        alert("إجابة صحيحة! 🎉");
+      } else {
+        document.getElementById("wrongSound").play();
+        alert("إجابة خاطئة 😢");
+      }
+      document.getElementById("scoreBoard").textContent = "النقاط: " + score;
+
+      // إظهار السؤال التالي
+      const currentQ = button.closest('.question');
+      const nextQ = currentQ.nextElementSibling;
+      if (nextQ && nextQ.classList.contains('question')) {
+        currentQ.classList.remove('active');
+        nextQ.classList.add('active');
+      } else {
+        alert("انتهت الأسئلة 🎊");
+      }
+    }
+  </script>
+
+</body>
+</html>
